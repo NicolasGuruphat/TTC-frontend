@@ -46,7 +46,7 @@
   </form>
 </template>
 
-<script>
+<!-- <script>
   let autocomplete;
   function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
@@ -61,7 +61,7 @@
 
 <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpVaculz0p4CmUOhZCE-gALMxjXwdWSC0&libraries=places&callback=initAutocomplete">
-</script>
+</script> -->
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
