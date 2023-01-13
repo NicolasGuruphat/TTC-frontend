@@ -1,5 +1,5 @@
 <template>
-  <form class="w-50 bg-white rounded-left p-2 m-5 rounded">
+  <form id="searsh" class="w-50 bg-white rounded-left p-4 m-5 rounded">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Genre</label>
       <select class="form-select" aria-label="Disabled select example">
@@ -101,5 +101,9 @@ export default defineComponent({
 }
 .redInput::placeholder{
   color: red;
+}
+
+#searsh {
+  height: 600px;
 }
 </style>
