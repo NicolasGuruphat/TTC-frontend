@@ -3,24 +3,24 @@
         <button id="close" @click="$emit('switchDisplay')">X</button>
         <div id="information-wrapper">
            <!-- {{club}} -->
-           <label id="nomClub"> nom du club</label>
+           <label id="nomClub"> ALBARINE FC</label>
         </div>
 
         <div class="wrapper">
-          <div class = "colonne1">
-
-            <div class = "ligne1">
-              <label id="ville"> Ville : </label> 
-              <label id="ville_value"> METTRE VILLE</label>
-            </div>
-
-            <div class = "ligne2">
-            <label id="Fax">Fax : </label>
-            <label id="Fax_value">METTRE NUMERO </label>
-            </div>
-
+          <div class = "gauche">
+            <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
           </div>
-          <div class = "colonne2">
+
+
+          <!-- CETTE CLASS CONTIENT TOUTE LES INFO IMPORTANTE DU CLUB -->
+          <div class = "droite"> 
+            <label id="ville"> President(e) : </label> <label id="ville_value"> RECHEUR MARYLIN</label><br>
+            <label id="Fax">Fax : </label>  <label id="Fax_value">07 80 40 60 78 </label><br>
+            <label id="email">Email : </label>  <label id="Fax_value">frr@gmail.com</label><br>
+            <label id="Fax">Site du club : </label>  <a id="s" href="https://www.albarinebc.com/">https://www.albarinebc.com/ </a><br>
+          </div>
+
+          <div class = "gauche">
             <label id="ville"> Ville : </label> <label id="ville_value"> METTRE VILLE</label><br>
             <label id="Fax">Fax : </label>  <label id="Fax_value">METTRE NUMERO </label><br>
           </div>
@@ -51,6 +51,7 @@ export default {
     width: 90%;
     height: 85%;
     border-radius: 20px;
+    opacity: 0;
 }
 
 #information-wrapper {
@@ -58,7 +59,6 @@ export default {
     padding-top: 2.5%;
     color: black;
     font-size: 150%;
-    height: 120px;
     text-align: center;
     font-family: Calibri;
     font-weight: bold;
@@ -78,17 +78,28 @@ export default {
     background-color: red;
 }
 .wrapper {
+  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
+  grid-auto-columns: auto;
   grid-gap: 20px;
+
 }
 
-/* .ligne1 {
-  grid-row: 1;
+.gauche
+{
+  margin-left: 25%;
+  color: aliceblue;
 }
-.ligne2 {
-  grid-row: 2;
-} */
+
+.droite
+{
+  border-style:groove;
+}
+.imageclub
+{
+  width: 70%;
+}
 
 </style>
