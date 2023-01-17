@@ -22,7 +22,8 @@
               >Trouve un Club !</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="infos.html">A propos</a>
+            <router-link to="/apropos" class="nav-link text-white">A propos</router-link>
+
           </li>
 
 
