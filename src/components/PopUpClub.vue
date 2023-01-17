@@ -17,12 +17,10 @@
             <label id="ville"> President(e) : </label> <label id="ville_value"> RECHEUR MARYLIN</label><br>
             <label id="Fax">Fax : </label>  <label id="Fax_value">07 80 40 60 78 </label><br>
             <label id="email">Email : </label>  <label id="Fax_value">frr@gmail.com</label><br>
+            
             <label id="Fax">Site du club : </label>  <a id="s" href="https://www.albarinebc.com/">https://www.albarinebc.com/ </a><br>
-          </div>
-
-          <div class = "gauche">
             <label id="ville"> Ville : </label> <label id="ville_value"> METTRE VILLE</label><br>
-            <label id="Fax">Fax : </label>  <label id="Fax_value">METTRE NUMERO </label><br>
+
           </div>
 
 
@@ -40,24 +38,27 @@ export default {
     }
   };
 
+{}
 </script>
+
 <style scoped>
 #main-wrapper {
     position: absolute;
     top: 10%;
     left: 5%;
     z-index: 1000;
-    background: rgba(141, 134, 134, 0.925);
+   
+    background: #d4d7df;
     width: 90%;
     height: 85%;
     border-radius: 20px;
-    opacity: 0;
+    opacity: initial;
 }
 
 #information-wrapper {
     padding-left: 5%;
     padding-top: 2.5%;
-    color: black;
+    color:#4f6b93;
     font-size: 150%;
     text-align: center;
     font-family: Calibri;
@@ -90,12 +91,14 @@ export default {
 .gauche
 {
   margin-left: 25%;
-  color: aliceblue;
+  color: #4f6b93;
 }
 
 .droite
 {
-  border-style:groove;
+  color:#4f6b93;
+  margin-top: 25%;
+
 }
 .imageclub
 {
