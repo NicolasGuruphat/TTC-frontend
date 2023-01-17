@@ -24,16 +24,16 @@ export const useClubStore = defineStore('counter', {
       // call API
       // fill the clubs json
     },
-      async getAllClub() {
+    getAllClub() {
         try {
-          const response = await this.$http.get(
+          const response = this.$http.get(
             "http://localhost:3001/api/clubs/"
           );
           // JSON responses are automatically parsed.
           this.posts = response.data;
-          console.log(posts);
+          return(posts);
         } catch (error) {
-          console.log(error);
+          return(error);
         }
       },
   },

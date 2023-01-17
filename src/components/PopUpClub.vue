@@ -2,8 +2,9 @@
     <div id="main-wrapper">
         <button id="close" @click="$emit('switchDisplay')">X</button>
         <div id="information-wrapper">
-           <!-- {{club}} -->
+           <!-- {{club.getAllClub()}} -->
            <label id="nomClub"> ALBARINE FC</label>
+           
         </div>
 
         <div class="wrapper">
@@ -29,18 +30,40 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, onMounted } from "vue";
+import { useClubStore } from '@/stores/club';
 
-export default {
-    props: {
-      club: {
-        required: true
-      }
+// export default {
+//     props: {
+//       club: {
+//         required: true
+//       }
+//     }
+//   };
+
+
+
+export default defineComponent({
+  data() {
+    return {
+      club: useClubStore(),
+      adresse: "",
+      adresseIsEmpty: false,
+      adressePlaceHolder: "451 Cr Emile Zola",
+      distance: 0
     }
-  };
+  },
+  setup() {
 
-{}
+
+    // onMounted(()=>{
+
+    // })
+  },
+
+})
+
 </script>
-
 <style scoped>
 #main-wrapper {
     position: absolute;
