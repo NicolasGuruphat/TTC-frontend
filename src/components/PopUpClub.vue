@@ -2,7 +2,7 @@
     <div id="main-wrapper">
         <button id="close" @click="$emit('switchDisplay')">X</button>
         <div id="information-wrapper">
-           <!-- {{club.getAllClub()}} -->
+           {{store.mesClubs}}
            <label id="nomClub"> ALBARINE FC</label>
            
         </div>
@@ -32,21 +32,12 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import { useClubStore } from '@/stores/club';
-
-// export default {
-//     props: {
-//       club: {
-//         required: true
-//       }
-//     }
-//   };
-
+import { mapActions, mapGetters } from "pinia";
 
 
 export default defineComponent({
   data() {
     return {
-      club: useClubStore(),
       adresse: "",
       adresseIsEmpty: false,
       adressePlaceHolder: "451 Cr Emile Zola",
@@ -55,11 +46,12 @@ export default defineComponent({
   },
   setup() {
 
-
+    const store = useClubStore()
+    return {store}
     // onMounted(()=>{
 
     // })
-  },
+  }
 
 })
 

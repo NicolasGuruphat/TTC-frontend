@@ -31,7 +31,7 @@ export default {
         })
         .addTo(map);
         
-        console.log(club.getClub(10).nom);
+        // console.log(club.getClub(10).nom);
         leaflet.marker([props.latitude, props.longtitude]).addTo(map).on('click', ()=>{
           context.emit("club_id", 4);
           context.emit("displayPopUp", true);

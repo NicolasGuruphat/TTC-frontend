@@ -66,6 +66,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import { useClubStore } from '@/stores/club';
+import { mapGetters } from "pinia";
 
 export default defineComponent({
   data() {
