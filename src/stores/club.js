@@ -17,38 +17,30 @@ export const useClubStore = defineStore('counter', {
     
   },
   actions: {
-    getClubByLocation(location) {
-      console.log(location)
-      if(this.clubs.location == location)
-      return this.clubs
-        const response = axios.get(
-          "http://localhost:3001/api/clubs/"
-        ).then(response =>{
-           (this.clubs = response.data)
-           console.log(this.clubs)
-        }
-        )
-       
-        // JSON responses are automatically parsed.
-      
-       
+   async getClubByLocation(location) {
+    try {
+      const rdmlocation =  
+      {
+        "position": {
+        "lat":1.478099, 
+        "long":	88.442229}
+      }
+      this.clubs = await axios.post(
+        "http://localhost:3001/api/clubs/search",
+        rdmlocation
+      ).then
+      ((response)=>console.log(response))
+      // JSON responses are automatically parsed.
+    }
+    catch (error) {
+            return(error);
+         
+    }
       // call API
       // fill the clubs json
-      }
-        // async getAllClub() {
-    //     try {
-    //       const response = await this.$http.get(
-    //         "http://localhost:3001/api/clubs/"
-    //       );
-    //       // JSON responses are automatically parsed.
-    //       this.posts = response.data;
-    //       return(posts);
-    //     } catch (error) {
-    //       return(error);
-    //     }
-    //   },
-  },
-
-},)
+  }
+},
+}
+)
 
 
