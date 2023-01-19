@@ -36,8 +36,6 @@ export const useClubStore = defineStore('counter', {
             return(error);
          
     }
-      // call API
-      // fill the clubs json
   }
 },
 }

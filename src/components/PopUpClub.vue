@@ -10,14 +10,23 @@
         <div class="wrapper">
           <div class = "gauche">
             <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
+
+            <div v-for="direction,key in club.direction" >
+              <label id="direction_name">{{ key }} :</label>
+              <div v-for="item in direction">
+                    <label id="item">  {{ item }} </label>   
+              </div>  
+              </div>
+           
           </div>
 
 
           <!-- CETTE CLASS CONTIENT TOUTE LES INFO IMPORTANTE DU CLUB -->
           <div class = "droite"> 
-            <label id="ville"> President(e) : </label> <label id="ville_value"> RECHEUR MARYLIN</label><br>
-            <label id="Fax">Fax : </label>  <label id="Fax_value">07 80 40 60 78 </label><br>
-            <label id="email">Email : </label>  <label id="Fax_value">frr@gmail.com</label><br>
+           
+            <label id="president"> President(e) : </label> <label id="president_value"> {{ club.direction["Président(e)"][0] }}</label><br>
+            <label id="Fax_value"> {{ club.telephone }} </label><br>
+            <label id="mail_value">{{ club.email }}</label><br>
             
             <label id="Fax">Site du club : </label>  <a id="s" href="https://www.albarinebc.com/">https://www.albarinebc.com/ </a><br>
             <label id="ville"> Ville : </label> <label id="ville_value"> METTRE VILLE</label><br>
@@ -30,6 +39,8 @@
 </template>
 
 <script lang="ts">
+
+
 import { defineComponent, onMounted } from "vue";
 import { useClubStore } from '@/stores/club';
 import { mapActions, mapGetters } from "pinia";
@@ -37,11 +48,44 @@ import { mapActions, mapGetters } from "pinia";
 
 export default defineComponent({
   data() {
+
     return {
-      adresse: "",
-      adresseIsEmpty: false,
-      adressePlaceHolder: "451 Cr Emile Zola",
-      distance: 0
+      club : 
+      {
+      "nom": "CD01 - HORS ASSOCIATION - AIN - ARA0001001 - Club",
+      "adresse": "29 Bis Avenue de Bad Kreuznach",
+      "ville": "BOURG-EN-BRESSE",
+      "telephone": "Fax : T\u00e9l bureau : 0474236296",
+      "email": "Email : basket-ain@wanadoo.fr",
+      "site": "Site web : http://www.basketain.com",
+      "salle": [
+          "SALLE JEUNESSE LAIQUE / Mercier",
+          "plan",
+          "42 RUE CHARLES ROBIN",
+          "01000 BOURG-EN-BRESSE",
+          "T\u00e9l : 0474247893 Fax : ",
+          "Couleur des maillots VERT"
+      ],
+      "direction": {
+          "Pr\u00e9sident(e)": [
+              "BRUN Christophe",
+              "01000 BOURG-EN-BRESSE",
+              "T\u00e9l 1 : 0474236296",
+              "T\u00e9l 2 : 0629999317",
+              "email : basket-ain-president@orange.fr"
+          ],
+          "Correspondant(e)": [
+              "DEBIESSE-TIXIER Karine",
+              "39160 CHAZELLES",
+              "T\u00e9l 2 : 0648483362",
+              "email : basket-ain-secretairegeneral@orange.fr"
+          ]
+      },
+      "equipes": [
+          "TIC U13 Masculin 2022 (PIERRE BENITE)",
+          "TIC U13 F\u00e9minin 2022 (PIERRE BENITE)"
+      ]
+}
     }
   },
   setup() {
@@ -80,6 +124,12 @@ export default defineComponent({
     font-weight: bold;
 }
 
+#direction_name
+{
+  margin-bottom: 1%;
+  margin-top: 2%;
+}
+
 #close {
     position: absolute;
     right: 1.5%;
@@ -94,7 +144,6 @@ export default defineComponent({
     background-color: red;
 }
 .wrapper {
-  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
@@ -105,8 +154,8 @@ export default defineComponent({
 
 .gauche
 {
-  margin-left: 25%;
   color: #4f6b93;
+  margin-left: 10%;
 }
 
 .droite
@@ -117,7 +166,7 @@ export default defineComponent({
 }
 .imageclub
 {
-  width: 70%;
+  width: 30%;
 }
 
 </style>
