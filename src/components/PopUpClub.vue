@@ -2,8 +2,8 @@
     <div id="main-wrapper">
         <button id="close" @click="$emit('switchDisplay')">X</button>
         <div id="information-wrapper">
-           {{store.mesClubs}}
-           <label id="nomClub"> ALBARINE FC</label>
+           <!-- {{store.mesClubs}} -->
+           <label id="nom_club">{{ club.nom }}</label><br>
            
         </div>
 
@@ -24,12 +24,24 @@
           <!-- CETTE CLASS CONTIENT TOUTE LES INFO IMPORTANTE DU CLUB -->
           <div class = "droite"> 
            
-            <label id="president"> President(e) : </label> <label id="president_value"> {{ club.direction["Président(e)"][0] }}</label><br>
-            <label id="Fax_value"> {{ club.telephone }} </label><br>
-            <label id="mail_value">{{ club.email }}</label><br>
             
-            <label id="Fax">Site du club : </label>  <a id="s" href="https://www.albarinebc.com/">https://www.albarinebc.com/ </a><br>
-            <label id="ville"> Ville : </label> <label id="ville_value"> METTRE VILLE</label><br>
+            <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
+            <label id="mail_club">{{ club.email }}</label><br>
+            <label id="fax_club"> {{  club.telephone }}</label> <br>
+            <label id="siteWeb_club"> {{ club.site }}</label> <br>
+            <label id="ville"> Ville : </label> <label id="ville_club"> {{ club.ville }}</label><br>
+            <label id="salle">Salle : </label><br>
+            <div v-for="infoSalle,key in club.salle">
+                    
+                    <label id="infoSalle">  {{ infoSalle }} </label>   
+            </div> 
+
+            <label id="equipe">Equipe : </label><br>
+            <div v-for="equipe,key in club.equipes">
+                    
+                    <label id="equipe_club">  {{ equipe }} </label>   
+            </div> 
+
 
           </div>
 
@@ -124,11 +136,12 @@ export default defineComponent({
     font-weight: bold;
 }
 
-#direction_name
+#direction_name,#salle,#equipe
 {
   margin-bottom: 1%;
   margin-top: 2%;
 }
+
 
 #close {
     position: absolute;
@@ -161,7 +174,7 @@ export default defineComponent({
 .droite
 {
   color:#4f6b93;
-  margin-top: 25%;
+  margin-top: 10%;
 
 }
 .imageclub
