@@ -1,5 +1,5 @@
 <template>
-  <div id="map" ></div>
+  <div id="map" class="m-5"></div>
 </template>
 
 <script lang="ts">
@@ -45,7 +45,7 @@ export default {
 <style second>
 #map {
   height: 600px;
-  width : 100%;
+  width : 800px;
   border-radius: .40rem
 }
 </style>

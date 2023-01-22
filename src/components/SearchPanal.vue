@@ -1,5 +1,5 @@
 <template>
-  <form class="w-50 bg-white rounded-left p-2 m-5 rounded">
+  <form id="searsh" class="w-50 bg-white rounded-left p-4 m-5 rounded">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Genre</label>
       <select class="form-select" aria-label="Disabled select example">
@@ -24,7 +24,7 @@
     <div class="mb-3">
       <label for="adresse" class="form-label" >Adresse</label>
       <br>
-      <input type="text" id="autocomplete" class="form-control" :placeholder="adressePlaceHolder" v-model="adresse" @focus="(adresseIsEmpty=false)" :class="{redInput:adresseIsEmpty}"/>
+      <input type="text" id="autocomplete" v-on:input="getAutocomplete()" class="form-control" :placeholder="adressePlaceHolder" v-model="adresse" @focus="(adresseIsEmpty=false)" :class="{redInput:adresseIsEmpty}"/>
     </div>
     <!-- <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -44,26 +44,13 @@
     </div>
     <button type="button" @click="getClubs()" class="btn btn-primary">Trouve les clubs!</button>
   </form>
+  
 </template>
 
-<!-- <script>
-  let autocomplete;
-  function initAutocomplete() {
-    autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById('autocomplete'),
-      {
-        types: ['establishement'],
-        fields: ['place_id', 'geometry', 'name']
-      }
-    );
-  }
-</script>
 
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpVaculz0p4CmUOhZCE-gALMxjXwdWSC0&libraries=places&callback=initAutocomplete">
-</script> -->
 
-<script lang="ts">
+<script lang="ts" >
+
 import { defineComponent, onMounted } from "vue";
 import { useClubStore } from '@/stores/club';
 import { mapGetters } from "pinia";
@@ -92,9 +79,35 @@ export default defineComponent({
       }else{
         this.club.getClubByLocation(this.adresse);
       }
-    }
+    },
+    //ICI LA ICI 
+    getAutocomplete() {
+      fetch('https://api-adresse.data.gouv.fr/search/?q=' + this.adresse, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+    },
+  }
+)
+.then(response => response.json())
+.then(response => console.log(JSON.stringify(response)))
+   // console.log(this.adresse);
+   // const userAction = async () => {
+   // const response = await fetch('https://api-adresse.data.gouv.fr/search/?q=' + this.adresse);
+   // const myJson = await response.json(); //extract JSON from the http response
+   // console.log("gouga");
+  // do something with myJson
+  //}
+  
+}
+
   }
 })
+
+
+    
+
+
 </script>
 <style>
 .redInput {
@@ -102,5 +115,9 @@ export default defineComponent({
 }
 .redInput::placeholder{
   color: red;
+}
+
+#searsh {
+  height: 600px;
 }
 </style>

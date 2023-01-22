@@ -9,10 +9,10 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div id="app">
   <Nav></Nav>
 
-  <main class="d-flex justify-content-center">
+  <main class="d-flex justify-content-center align-items-center">
     <router-view></router-view>
 
     
@@ -22,5 +22,10 @@ export default {
 </template>
 
 <style scoped>
-
+#app {
+    min-height: 100vh;
+}
+main{
+  min-height: 90vh;
+}
 </style>
