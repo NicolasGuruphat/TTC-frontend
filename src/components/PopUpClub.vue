@@ -2,41 +2,179 @@
     <div id="main-wrapper">
         <button id="close" @click="$emit('switchDisplay')">X</button>
         <div id="information-wrapper">
-           {{club}}
+           <!-- {{store.mesClubs}} -->
+           <label id="nom_club">{{ club.nom }}</label><br>
+           
         </div>
+
+        <div class="wrapper">
+          <div class = "colonne1">
+            <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
+            <div class ="direction">
+            <div class = "ligne" v-for="direction,key in club.direction" >
+              <label id="direction_name">{{ key }} :</label>
+              <div v-for="item in direction">
+                    <label id="item">  {{ item }} </label>   
+              </div>  
+              </div>
+            </div>
+          </div>
+
+
+          <!-- CETTE CLASS CONTIENT TOUTE LES INFO IMPORTANTE DU CLUB -->
+          <div class = "colonne2"> 
+            <div class = "contact">
+              <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
+                <label id="mail_club">{{ club.email }}</label><br>
+                <label id="fax_club"> {{  club.telephone }}</label> <br>
+                <label id="siteWeb_club"> {{ club.site }}</label> <br>
+                <label id="ville"> Ville : </label> <label id="ville_club"> {{ club.ville }}</label><br>
+            </div>
+            <div class="salle_equipe">
+                <label id="salle">Salle : </label><br>
+                <div v-for="infoSalle,key in club.salle">
+                      <label id="infoSalle">  {{ infoSalle }} </label>
+                </div>
+                <label id="equipe">Equipe : </label><br>
+                <div v-for="equipe,key in club.equipes">
+                      <label id="equipe_club">  {{ equipe }} </label>   
+            </div> 
+          
+          
+          </div>
+          </div>
+
+        </div>  
     </div>
 </template>
 
 <script lang="ts">
 
-export default {
-    props: {
-      club: {
-        required: true
-      }
+
+import { defineComponent, onMounted } from "vue";
+import { useClubStore } from '@/stores/club';
+import { mapActions, mapGetters } from "pinia";
+
+
+export default defineComponent({
+  data() {
+
+    return {
+      club : 
+      {
+      "nom": "CD01 - HORS ASSOCIATION - AIN - ARA0001001 - Club",
+      "adresse": "29 Bis Avenue de Bad Kreuznach",
+      "ville": "BOURG-EN-BRESSE",
+      "telephone": "Fax : T\u00e9l bureau : 0474236296",
+      "email": "Email : basket-ain@wanadoo.fr",
+      "site": "Site web : http://www.basketain.com",
+      "salle": [
+          "SALLE JEUNESSE LAIQUE / Mercier",
+          "plan",
+          "42 RUE CHARLES ROBIN",
+          "01000 BOURG-EN-BRESSE",
+          "T\u00e9l : 0474247893 Fax : ",
+          "Couleur des maillots VERT"
+      ],
+      "direction": {
+          "Pr\u00e9sident(e)": [
+              "BRUN Christophe",
+              "01000 BOURG-EN-BRESSE",
+              "T\u00e9l 1 : 0474236296",
+              "T\u00e9l 2 : 0629999317",
+              "email : basket-ain-president@orange.fr"
+          ],
+          "Correspondant(e)": [
+              "DEBIESSE-TIXIER Karine",
+              "39160 CHAZELLES",
+              "T\u00e9l 2 : 0648483362",
+              "email : basket-ain-secretairegeneral@orange.fr"
+          ]
+      },
+      "equipes": [
+          "TIC U13 Masculin 2022 (PIERRE BENITE)",
+          "TIC U13 F\u00e9minin 2022 (PIERRE BENITE)"
+      ]
+}
     }
-  };
+  },
+  setup() {
+
+    const store = useClubStore()
+    return {store}
+    // onMounted(()=>{
+
+    // })
+  }
+
+})
 
 </script>
 <style scoped>
 #main-wrapper {
-    position: absolute;
+    position:fixed;
     top: 10%;
     left: 5%;
     z-index: 1000;
-    background: rgba(141, 134, 134, 0.925);
+    background: #dee7fa;
     width: 90%;
     height: 85%;
     border-radius: 20px;
+    opacity: initial;
+    ;
 }
 
 #information-wrapper {
     padding-left: 5%;
     padding-top: 2.5%;
-    color: black;
+    color:white;
     font-size: 150%;
+    text-align: center;
     font-family: Calibri;
     font-weight: bold;
+}
+
+#direction_name,#salle,#equipe
+{
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.ligne
+{
+  float: left;
+  margin-left : 4%;
+}
+.direction
+{
+ 
+  margin-top: 10%;
+  background-color: #7f7f7f;
+  padding-left: 2%;
+  height: auto;
+  grid-row: 2;
+  columns: 1;
+  border-radius: 20px;
+  color : white;
+}
+.contact
+{
+  margin-top: 10%;
+  background-color: #7f7f7f;
+  height: auto;
+  grid-row: 2;
+  border-radius: 20px;
+  color : white;
+
+}
+.salle_equipe
+{
+  margin-top: 10%;
+  background-color: #7f7f7f;
+  height: auto;
+  grid-row: 2;
+  border-radius: 20px;
+  color : white;
 }
 
 #close {
@@ -52,4 +190,44 @@ export default {
     border: none;
     background-color: red;
 }
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 60%);
+  grid-template-rows: repeat(2, 1fr);
+  position: relative;
+  width: 90%;
+  height: 85%;
+  padding-left: 5%;
+}
+/* 
+.colonne1
+{
+  color: white ;
+  margin-left: 10%;
+  height: auto;
+}
+
+.colonne2
+{
+  align-content: center;
+  color:white;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.colonne3
+{
+  align-content: center;
+  color:white;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+*/
+.imageclub
+{
+  width: 40%;
+  columns: 1;
+  grid-row: 1;
+} 
+
 </style>
