@@ -1,7 +1,11 @@
 
 <template>
-    <div id="poster">
-    <h1></h1>
+    <div id="poster" class="d-flex flex-column justify-content-center align-items-center">
+    <h1>Choisissez votre activité préférée</h1>
+    <h1>et trouvez le club le plus convenant pour toi</h1>
+
+    <a class="text-decoration-none mt-5" href="#sports"><h1  class="mt-5 text-warning">C'est parti !</h1></a> 
+
     </div>
 </template>
 
@@ -18,5 +22,23 @@ export default defineComponent({});
     background-image : url('@/images/ezgif.com-gif-maker(2).gif');
     background-size: cover;
     
+}
+h1{
+    font-size : 3rem;
+    font-weight : 700;
+
+}
+#go:hover{
+    cursor : pointer;
+    color : #f5f5f5 important!;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+
+.scroll-container {
+  width: 350px;
+  height: 200px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 </style>

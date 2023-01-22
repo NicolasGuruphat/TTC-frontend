@@ -15,7 +15,7 @@ export default {
 
 <template>
 
-    <div class="d-flex flex-column w-100 justify-content-center">
+    <div class="d-flex flex-column w-100 justify-content-center scroll-container">
         <Poster></Poster>
         <Sports></Sports>
         
@@ -25,5 +25,11 @@ export default {
 </template>
 
 <style scoped>
+.scroll-container {
+  width: 350px;
+  height: auto;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
 
 </style>
