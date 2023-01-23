@@ -24,7 +24,7 @@
     <div class="mb-3">
       <label for="adresse" class="form-label" >Adresse</label>
       <br>
-      <input type="text" id="autocomplete" v-on:input="getAutocomplete()" class="form-control" :placeholder="adressePlaceHolder" v-model="adresse" @focus="(adresseIsEmpty=false)" :class="{redInput:adresseIsEmpty}"/>
+      <input type="text" id="autocomplete" class="form-control" :placeholder="adressePlaceHolder" v-model="adresse" @focus="(adresseIsEmpty=false)" :class="{redInput:adresseIsEmpty}"/>
     </div>
     <!-- <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -79,27 +79,7 @@ export default defineComponent({
       }else{
         this.club.getClubByLocation(this.adresse);
       }
-    },
-    //ICI LA ICI 
-    getAutocomplete() {
-      fetch('https://api-adresse.data.gouv.fr/search/?q=' + this.adresse, {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-    },
-  }
-)
-.then(response => response.json())
-.then(response => console.log(JSON.stringify(response)))
-   // console.log(this.adresse);
-   // const userAction = async () => {
-   // const response = await fetch('https://api-adresse.data.gouv.fr/search/?q=' + this.adresse);
-   // const myJson = await response.json(); //extract JSON from the http response
-   // console.log("gouga");
-  // do something with myJson
-  //}
-  
-}
+    }
 
   }
 })
