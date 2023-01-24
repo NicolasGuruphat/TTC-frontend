@@ -1,23 +1,10 @@
 <template>
-    <div id="main-wrapper">
-        <button id="close" @click="$emit('switchDisplay')">X</button>
-        <div id="information-wrapper">
-           <!-- {{store.mesClubs}} -->
-           <label id="nom_club">{{ club.nom }}</label><br>
-           
-        </div>
-
-        <div class="wrapper">
-
-
-
-          <!--Image-->
-          <div class = "image">
-            <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
-          </div>
-
-        <!-- ADRESSE-->
-        <div class = "adresse"> 
+<section>
+  <details open>
+    <summary>Adresse</summary>
+    <div>
+      <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
+      <div class = "adresse"> 
             <div class = "contact">
               <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
                 <label id="mail_club">{{ club.email }}</label><br>
@@ -25,10 +12,13 @@
                 <label id="siteWeb_club"> {{ club.site }}</label> <br>
                 <label id="ville"> Ville : </label> <label id="ville_club"> {{ club.ville }}</label><br>
             </div>
-          </div>
-
-        <!--DIRECTION-->
-        <div class = "direction"> 
+        </div>
+    </div>
+  </details>
+  <details>
+    <summary>Direction</summary>
+    <div>
+      <div class = "direction"> 
             <div class = "ligne1" v-for="direction,key in club.direction" >
                <label id="direction_name">{{ key }} :</label>
                <div v-for="item in direction">
@@ -36,9 +26,12 @@
               </div>  
           </div>
         </div>
-
-        <!--SALLE-->
-          <div class = "salle_equipe"> 
+    </div>
+  </details>
+  <details>
+    <summary>Salle et Equipes</summary>
+    <div>
+      <div class = "salle_equipe"> 
                 <label id="titre">Salle : </label><br>
                 <div class="ligne2" v-for="infoSalle,key in club.salle">
                       <label id="infoSalle">  {{ infoSalle }} </label>
@@ -51,10 +44,9 @@
                   </div> 
                 </div>
             </div>
-           
-      </div>
-          
-      </div>
+    </div>
+  </details>
+</section>
 </template>
 
 <script lang="ts">
@@ -71,39 +63,49 @@ export default defineComponent({
     return {
       club : 
       {
-      "nom": "CD01 - HORS ASSOCIATION - AIN - ARA0001001 - Club",
-      "adresse": "29 Bis Avenue de Bad Kreuznach",
-      "ville": "BOURG-EN-BRESSE",
-      "telephone": "Fax : T\u00e9l bureau : 0474236296",
-      "email": "Email : basket-ain@wanadoo.fr",
-      "site": "Site web : http://www.basketain.com",
-      "salle": [
-          "SALLE JEUNESSE LAIQUE / Mercier",
-          "plan",
-          "42 RUE CHARLES ROBIN",
-          "01000 BOURG-EN-BRESSE",
-          "T\u00e9l : 0474247893 Fax : ",
-          "Couleur des maillots VERT"
-      ],
-      "direction": {
-          "Pr\u00e9sident(e)": [
-              "BRUN Christophe",
-              "01000 BOURG-EN-BRESSE",
-              "T\u00e9l 1 : 0474236296",
-              "T\u00e9l 2 : 0629999317",
-              "email : basket-ain-president@orange.fr"
-          ],
-          "Correspondant(e)": [
-              "DEBIESSE-TIXIER Karine",
-              "39160 CHAZELLES",
-              "T\u00e9l 2 : 0648483362",
-              "email : basket-ain-secretairegeneral@orange.fr"
-          ]
-      },
-      "equipes": [
-          "TIC U13 Masculin 2022 (PIERRE BENITE)",
-          "TIC U13 F\u00e9minin 2022 (PIERRE BENITE)"
-      ]
+  "_id": {
+    "$oid": "63ce501582967f6220b34d2f"
+  },
+  "nom": "CD01 - HORS ASSOCIATION - AIN - ARA0001001 - Club",
+  "adresse": "29 Bis Avenue de Bad Kreuznach",
+  "ville": "BOURG-EN-BRESSE",
+  "telephone": "Fax : Tél bureau : 0474236296",
+  "email": "Email : basket-ain@wanadoo.fr",
+  "site": "Site web : http://www.basketain.com",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      5.242828,
+      46.214477
+    ]
+  },
+  "salle": [
+    "SALLE JEUNESSE LAIQUE / Mercier",
+    "plan",
+    "42 RUE CHARLES ROBIN",
+    "01000 BOURG-EN-BRESSE",
+    "Tél : 0474247893 Fax : ",
+    "Couleur des maillots VERT"
+  ],
+  "direction": {
+    "Président(e)": [
+      "BRUN Christophe",
+      "01000 BOURG-EN-BRESSE",
+      "Tél 1 : 0474236296",
+      "Tél 2 : 0629999317",
+      "email : basket-ain-president@orange.fr"
+    ],
+    "Correspondant(e)": [
+      "DEBIESSE-TIXIER Karine",
+      "39160 CHAZELLES",
+      "Tél 2 : 0648483362",
+      "email : basket-ain-secretairegeneral@orange.fr"
+    ]
+  },
+  "equipes": [
+    "TIC U13 Masculin 2022 (PIERRE BENITE)",
+    "TIC U13 Féminin 2022 (PIERRE BENITE)"
+  ]
 }
     }
   },
@@ -127,7 +129,7 @@ export default defineComponent({
     z-index: 1000;
     background: #dee7fa;
     width: 90%;
-    height: 85%;
+    height: 100%;
     border-radius: 20px;
     opacity: initial;
     ;
@@ -143,109 +145,131 @@ export default defineComponent({
     font-weight: bold;
 }
 
-#direction_name,#salle,#equipe
-{
-  margin-bottom: 2%;
-  margin-top: 1%;
+@import url("https://fonts.googleapis.com/css?family=Karla|Space+Mono");
+
+:root {
+  --contentHeight: 30vh;
+  --sectionWidth: 700px;
 }
 
-#titre
-{
-  margin-top: 2%;
-  margin-bottom: 2%;
-  float: left;
-}
-.ligne1
-{
-  margin-top: 2%;
-  margin-left: 2%;
-  float: left;
-  
+* {
+  outline: 0;
+  box-sizing: border-box;
 }
 
-.ligne2
-{
-  margin-left: 2%;
-  float: left;
-  
+body {
+  background-color: #000;
 }
 
-.equipe
-{
-  float :left;
-}
-.direction
-{
-  padding-left: 10%;
-  margin-top: 10%;
-  padding-top: 5%;
-  background-color: #7f7f7f;
-  padding-bottom: 5%;
-  height: auto;
-  grid-row: 2;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  color : white;
-  size: 100%;
-  
-}
-.adresse
-{
-  margin-top: 15%;
-  padding-top: 2%;
-  padding-left: 10%;
-  background-color: #7f7f7f;
-  height: auto;
-  border-radius: 20px;
-  color : white;
-
-}
-.salle_equipe
-{
-  padding-top: 5%;
-  padding-left: 10%;
-  margin-top: 15%;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  background-color: #7f7f7f;
-  padding-bottom: 5%;
-  height: auto;
-  grid-row: 2;
-  color : white;
-  size: 100%;
+section {
+  max-width: var(--sectionWidth);
+  margin: 40px auto;
+  width: 97%;
+  color: #fff;
 }
 
-#close {
-    position: absolute;
-    right: 1.5%;
-    top: 2.5%;
-    width:30px;
-    height:30px;
-    font-weight: bolder;
-    text-align: center;
-    border-radius: 100%;
-    color: white;
-    border: none;
-    background-color: red;
-}
-.wrapper {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 40% 60%;
-  position: relative;
-  width: 90%;
-  height: 85%;
-  padding-left: 5%;
-}
-.imageclub
+.imageClub
 {
-  width: 40%;
-  columns: 1;
-  grid-row: 1;
+  size: 40%;
 }
-#nom_club
-{
-  color:#7f7f7f;
+summary {
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 22px;
+  transition: .3s;
+  border-bottom: 2px solid;
+  user-select: none;
+}
+
+details > div {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 100%;
+  user-select: none;
+  padding: 0 20px;
+  font-family: "Karla", sans-serif;
+  line-height: 1.5;
+}
+
+details > div > img {
+  align-self: flex-start;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+details > div > p {
+  flex: 1;
+}
+
+details[open] > summary {
+   color: red;
+}
+
+@media (min-width: 768px) {
+  details[open] > div > p {
+    opacity: 0;
+    animation-name: showContent;
+    animation-duration: 0.6s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  details[open] > div {
+    animation-name: slideDown;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  details[open] > div > img {
+    opacity: 0;
+    height: 100%;
+    margin: 0;
+    animation-name: showImage;
+    animation-duration: 0.3s;
+    animation-delay: 0.15s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+
+  to {
+    opacity: 1;
+    height: var(--contentHeight);
+    padding: 20px;
+  }
+}
+
+@keyframes showImage {
+  from {
+    opacity: 0;
+    clip-path: inset(50% 0 50% 0);
+    transform: scale(0.4);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes showContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 </style>
