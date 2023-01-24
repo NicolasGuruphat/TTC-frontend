@@ -205,7 +205,7 @@ details > div > p {
 }
 
 details[open] > summary {
-   color: red;
+   color: white;
 }
 
 @media (min-width: 768px) {
