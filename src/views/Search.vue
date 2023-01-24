@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex flex-row w-75 justify-content-center">
     <SearchPanal @clubs="clubs = $event"></SearchPanal>
-    <Map :latitude = 45.764043 :longtitude= 4.835659 @club_id="club_id = $event" :clubs="clubs" @displayPopUp = "displayPopUp = $event">
+    <Map :latitude = 45.764043 :longtitude= 4.835659 @setClub="club = $event" :clubs="clubs" @displayPopUp = "displayPopUp = $event">
     </Map>
   </div>
   <!-- bouton temporaire -->
-  <PopUpClub v-if="displayPopUp" @switchDisplay="displayPopUp = !displayPopUp" :club="clubs[club_id]"/>
+  <PopUpClub v-if="displayPopUp" @switchDisplay="displayPopUp = !displayPopUp" :club="club"/>
 </template>
 
 <script lang="ts">
@@ -22,7 +22,8 @@ export default {
     return {
       displayPopUp: false,
       clubs : ['first', 'second', 'third', 'fourth', 'five', 'six', 'seven', 'eight'],
-      club_id : 0
+      club_id : 0,
+      club: null
     }
   }
 }
