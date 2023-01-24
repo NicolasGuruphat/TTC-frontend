@@ -8,21 +8,16 @@
         </div>
 
         <div class="wrapper">
-          <div class = "colonne1">
+
+
+
+          <!--Image-->
+          <div class = "image">
             <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
-            <div class ="direction">
-            <div class = "ligne" v-for="direction,key in club.direction" >
-              <label id="direction_name">{{ key }} :</label>
-              <div v-for="item in direction">
-                    <label id="item">  {{ item }} </label>   
-              </div>  
-              </div>
-            </div>
           </div>
 
-
-          <!-- CETTE CLASS CONTIENT TOUTE LES INFO IMPORTANTE DU CLUB -->
-          <div class = "colonne2"> 
+        <!-- ADRESSE-->
+        <div class = "adresse"> 
             <div class = "contact">
               <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
                 <label id="mail_club">{{ club.email }}</label><br>
@@ -30,22 +25,36 @@
                 <label id="siteWeb_club"> {{ club.site }}</label> <br>
                 <label id="ville"> Ville : </label> <label id="ville_club"> {{ club.ville }}</label><br>
             </div>
-            <div class="salle_equipe">
-                <label id="salle">Salle : </label><br>
-                <div v-for="infoSalle,key in club.salle">
-                      <label id="infoSalle">  {{ infoSalle }} </label>
-                </div>
-                <label id="equipe">Equipe : </label><br>
-                <div v-for="equipe,key in club.equipes">
-                      <label id="equipe_club">  {{ equipe }} </label>   
-            </div> 
-          
-          
-          </div>
           </div>
 
-        </div>  
-    </div>
+        <!--DIRECTION-->
+        <div class = "direction"> 
+            <div class = "ligne1" v-for="direction,key in club.direction" >
+               <label id="direction_name">{{ key }} :</label>
+               <div v-for="item in direction">
+                    <label id="item">  {{ item }} </label>   
+              </div>  
+          </div>
+        </div>
+
+        <!--SALLE-->
+          <div class = "salle_equipe"> 
+                <label id="titre">Salle : </label><br>
+                <div class="ligne2" v-for="infoSalle,key in club.salle">
+                      <label id="infoSalle">  {{ infoSalle }} </label>
+                </div>
+                <br>
+              <div class="equipe">
+                <label id="titre">Equipe : </label><br>
+                  <div class="ligne2" v-for="equipe,key in club.equipes">
+                        <label id="equipe_club">  {{ equipe }} </label>   
+                  </div> 
+                </div>
+            </div>
+           
+      </div>
+          
+      </div>
 </template>
 
 <script lang="ts">
@@ -112,7 +121,7 @@ export default defineComponent({
 </script>
 <style scoped>
 #main-wrapper {
-    position:fixed;
+    position:absolute;
     top: 10%;
     left: 5%;
     z-index: 1000;
@@ -136,45 +145,74 @@ export default defineComponent({
 
 #direction_name,#salle,#equipe
 {
-  margin-bottom: 1%;
+  margin-bottom: 2%;
   margin-top: 1%;
 }
 
-.ligne
+#titre
 {
+  margin-top: 2%;
+  margin-bottom: 2%;
   float: left;
-  margin-left : 4%;
+}
+.ligne1
+{
+  margin-top: 2%;
+  margin-left: 2%;
+  float: left;
+  
+}
+
+.ligne2
+{
+  margin-left: 2%;
+  float: left;
+  
+}
+
+.equipe
+{
+  float :left;
 }
 .direction
 {
- 
+  padding-left: 10%;
   margin-top: 10%;
+  padding-top: 5%;
   background-color: #7f7f7f;
-  padding-left: 2%;
+  padding-bottom: 5%;
   height: auto;
   grid-row: 2;
-  columns: 1;
-  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   color : white;
+  size: 100%;
+  
 }
-.contact
+.adresse
 {
-  margin-top: 10%;
+  margin-top: 15%;
+  padding-top: 2%;
+  padding-left: 10%;
   background-color: #7f7f7f;
   height: auto;
-  grid-row: 2;
   border-radius: 20px;
   color : white;
 
 }
 .salle_equipe
 {
-  margin-top: 10%;
+  padding-top: 5%;
+  padding-left: 10%;
+  margin-top: 15%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   background-color: #7f7f7f;
+  padding-bottom: 5%;
   height: auto;
   grid-row: 2;
-  border-radius: 20px;
   color : white;
+  size: 100%;
 }
 
 #close {
@@ -192,42 +230,22 @@ export default defineComponent({
 }
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 60%);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 40% 60%;
   position: relative;
   width: 90%;
   height: 85%;
   padding-left: 5%;
 }
-/* 
-.colonne1
-{
-  color: white ;
-  margin-left: 10%;
-  height: auto;
-}
-
-.colonne2
-{
-  align-content: center;
-  color:white;
-  margin-top: 10%;
-  margin-left: 10%;
-}
-.colonne3
-{
-  align-content: center;
-  color:white;
-  margin-top: 10%;
-  margin-left: 10%;
-}
-
-*/
 .imageclub
 {
   width: 40%;
   columns: 1;
   grid-row: 1;
-} 
+}
+#nom_club
+{
+  color:#7f7f7f;
+}
 
 </style>
