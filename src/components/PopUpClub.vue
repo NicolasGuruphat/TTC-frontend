@@ -1,28 +1,10 @@
 <template>
-    <div id="main-wrapper">
-        <button id="close" @click="$emit('switchDisplay')">X</button>
-        <div id="information-wrapper">
-           <!-- {{store.mesClubs}} -->
-           <label id="nom_club">{{ club.nom }}</label><br>
-           
-        </div>
-
-        <div class="wrapper">
-          <div class = "colonne1">
-            <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
-            <div class ="direction">
-            <div class = "ligne" v-for="direction,key in club.direction" >
-              <label id="direction_name">{{ key }} :</label>
-              <div v-for="item in direction">
-                    <label id="item">  {{ item }} </label>   
-              </div>  
-              </div>
-            </div>
-          </div>
-
-
-          <!-- CETTE CLASS CONTIENT TOUTE LES INFO IMPORTANTE DU CLUB -->
-          <div class = "colonne2"> 
+<section>
+  <details open>
+    <summary>Adresse</summary>
+    <div>
+      <img  class= "imageclub" src="../images/logo_fond_blanc_viuz_basket.png"  alt="Impossible de charger l'image">
+      <div class = "adresse"> 
             <div class = "contact">
               <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
                 <label id="mail_club">{{ club.email }}</label><br>
@@ -30,22 +12,41 @@
                 <label id="siteWeb_club"> {{ club.site }}</label> <br>
                 <label id="ville"> Ville : </label> <label id="ville_club"> {{ club.ville }}</label><br>
             </div>
-            <div class="salle_equipe">
-                <label id="salle">Salle : </label><br>
-                <div v-for="infoSalle,key in club.salle">
+        </div>
+    </div>
+  </details>
+  <details>
+    <summary>Direction</summary>
+    <div>
+      <div class = "direction"> 
+            <div class = "ligne1" v-for="direction,key in club.direction" >
+               <label id="direction_name">{{ key }} :</label>
+               <div v-for="item in direction">
+                    <label id="item">  {{ item }} </label>   
+              </div>  
+          </div>
+        </div>
+    </div>
+  </details>
+  <details>
+    <summary>Salle et Equipes</summary>
+    <div>
+      <div class = "salle_equipe"> 
+                <label id="titre">Salle : </label><br>
+                <div class="ligne2" v-for="infoSalle,key in club.salle">
                       <label id="infoSalle">  {{ infoSalle }} </label>
                 </div>
-                <label id="equipe">Equipe : </label><br>
-                <div v-for="equipe,key in club.equipes">
-                      <label id="equipe_club">  {{ equipe }} </label>   
-            </div> 
-          
-          
-          </div>
-          </div>
-
-        </div>  
+                <br>
+              <div class="equipe">
+                <label id="titre">Equipe : </label><br>
+                  <div class="ligne2" v-for="equipe,key in club.equipes">
+                        <label id="equipe_club">  {{ equipe }} </label>   
+                  </div> 
+                </div>
+            </div>
     </div>
+  </details>
+</section>
 </template>
 
 <script lang="ts">
@@ -56,6 +57,7 @@ import { mapActions, mapGetters } from "pinia";
 
 
 export default defineComponent({
+
   props:{
     club: {default:{}}
   },
@@ -64,13 +66,13 @@ export default defineComponent({
 </script>
 <style scoped>
 #main-wrapper {
-    position:fixed;
+    position:absolute;
     top: 10%;
     left: 5%;
     z-index: 1000;
     background: #dee7fa;
     width: 90%;
-    height: 85%;
+    height: 100%;
     border-radius: 20px;
     opacity: initial;
     ;
@@ -86,100 +88,131 @@ export default defineComponent({
     font-weight: bold;
 }
 
-#direction_name,#salle,#equipe
-{
-  margin-bottom: 1%;
-  margin-top: 1%;
+@import url("https://fonts.googleapis.com/css?family=Karla|Space+Mono");
+
+:root {
+  --contentHeight: 30vh;
+  --sectionWidth: 700px;
 }
 
-.ligne
-{
-  float: left;
-  margin-left : 4%;
-}
-.direction
-{
- 
-  margin-top: 10%;
-  background-color: #7f7f7f;
-  padding-left: 2%;
-  height: auto;
-  grid-row: 2;
-  columns: 1;
-  border-radius: 20px;
-  color : white;
-}
-.contact
-{
-  margin-top: 10%;
-  background-color: #7f7f7f;
-  height: auto;
-  grid-row: 2;
-  border-radius: 20px;
-  color : white;
-
-}
-.salle_equipe
-{
-  margin-top: 10%;
-  background-color: #7f7f7f;
-  height: auto;
-  grid-row: 2;
-  border-radius: 20px;
-  color : white;
+* {
+  outline: 0;
+  box-sizing: border-box;
 }
 
-#close {
-    position: absolute;
-    right: 1.5%;
-    top: 2.5%;
-    width:30px;
-    height:30px;
-    font-weight: bolder;
-    text-align: center;
-    border-radius: 100%;
-    color: white;
-    border: none;
-    background-color: red;
-}
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(2, 60%);
-  grid-template-rows: repeat(2, 1fr);
-  position: relative;
-  width: 90%;
-  height: 85%;
-  padding-left: 5%;
-}
-/* 
-.colonne1
-{
-  color: white ;
-  margin-left: 10%;
-  height: auto;
+body {
+  background-color: #000;
 }
 
-.colonne2
-{
-  align-content: center;
-  color:white;
-  margin-top: 10%;
-  margin-left: 10%;
-}
-.colonne3
-{
-  align-content: center;
-  color:white;
-  margin-top: 10%;
-  margin-left: 10%;
+section {
+  max-width: var(--sectionWidth);
+  margin: 40px auto;
+  width: 97%;
+  color: #fff;
 }
 
-*/
-.imageclub
+.imageClub
 {
-  width: 40%;
-  columns: 1;
-  grid-row: 1;
-} 
+  size: 40%;
+}
+summary {
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 22px;
+  transition: .3s;
+  border-bottom: 2px solid;
+  user-select: none;
+}
+
+details > div {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 100%;
+  user-select: none;
+  padding: 0 20px;
+  font-family: "Karla", sans-serif;
+  line-height: 1.5;
+}
+
+details > div > img {
+  align-self: flex-start;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+details > div > p {
+  flex: 1;
+}
+
+details[open] > summary {
+   color: white;
+}
+
+@media (min-width: 768px) {
+  details[open] > div > p {
+    opacity: 0;
+    animation-name: showContent;
+    animation-duration: 0.6s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  details[open] > div {
+    animation-name: slideDown;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  details[open] > div > img {
+    opacity: 0;
+    height: 100%;
+    margin: 0;
+    animation-name: showImage;
+    animation-duration: 0.3s;
+    animation-delay: 0.15s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+
+  to {
+    opacity: 1;
+    height: var(--contentHeight);
+    padding: 20px;
+  }
+}
+
+@keyframes showImage {
+  from {
+    opacity: 0;
+    clip-path: inset(50% 0 50% 0);
+    transform: scale(0.4);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes showContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 </style>
