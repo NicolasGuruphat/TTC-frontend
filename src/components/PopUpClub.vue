@@ -53,71 +53,14 @@
 
 
 import { defineComponent, onMounted } from "vue";
-import { useClubStore } from '@/stores/club';
 import { mapActions, mapGetters } from "pinia";
 
 
 export default defineComponent({
-  data() {
 
-    return {
-      club : 
-      {
-  "_id": {
-    "$oid": "63ce501582967f6220b34d2f"
+  props:{
+    club: {default:{}}
   },
-  "nom": "CD01 - HORS ASSOCIATION - AIN - ARA0001001 - Club",
-  "adresse": "29 Bis Avenue de Bad Kreuznach",
-  "ville": "BOURG-EN-BRESSE",
-  "telephone": "Fax : Tél bureau : 0474236296",
-  "email": "Email : basket-ain@wanadoo.fr",
-  "site": "Site web : http://www.basketain.com",
-  "location": {
-    "type": "Point",
-    "coordinates": [
-      5.242828,
-      46.214477
-    ]
-  },
-  "salle": [
-    "SALLE JEUNESSE LAIQUE / Mercier",
-    "plan",
-    "42 RUE CHARLES ROBIN",
-    "01000 BOURG-EN-BRESSE",
-    "Tél : 0474247893 Fax : ",
-    "Couleur des maillots VERT"
-  ],
-  "direction": {
-    "Président(e)": [
-      "BRUN Christophe",
-      "01000 BOURG-EN-BRESSE",
-      "Tél 1 : 0474236296",
-      "Tél 2 : 0629999317",
-      "email : basket-ain-president@orange.fr"
-    ],
-    "Correspondant(e)": [
-      "DEBIESSE-TIXIER Karine",
-      "39160 CHAZELLES",
-      "Tél 2 : 0648483362",
-      "email : basket-ain-secretairegeneral@orange.fr"
-    ]
-  },
-  "equipes": [
-    "TIC U13 Masculin 2022 (PIERRE BENITE)",
-    "TIC U13 Féminin 2022 (PIERRE BENITE)"
-  ]
-}
-    }
-  },
-  setup() {
-
-    const store = useClubStore()
-    return {store}
-    // onMounted(()=>{
-
-    // })
-  }
-
 })
 
 </script>
