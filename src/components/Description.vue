@@ -6,8 +6,11 @@
 
 <style scoped>
 .description {
-  color: white;
+  color: #0B162C;
   font-size: large;
+  text-align: justify;
+  margin-top: 2%;
+  margin-bottom: 2%;
   margin-left: 20%;
   margin-right: 20%;
 }

@@ -1,5 +1,5 @@
 <template>
-    <img v-if="showLogo" class="team-logo" src="../images/wejdene.jpeg" alt="Team logo">
+    <img v-if="showLogo" class="team-logo" src="../images/basketball-ball.png" alt="Team logo">
   </template>
   
   <script lang="ts">
@@ -20,6 +20,7 @@
     opacity: 0;
   }
   .team-logo {
+    margin-top: 2%;
     width: 200px;
     margin-right: 20px;
   }

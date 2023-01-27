@@ -30,16 +30,25 @@ export default {
 
 .top-section {
   height: 25%;
-  background-color: purple;
+  
+}
+
+.h1{
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .bottom-section {
+  padding-top: 3%;
   height: 75%;
-  background-color: blue;
+  background-color: #5FC2BA;
+  border-radius: 10px;
 }
 
 .container {
+  
   margin: 1rem 0;
+  
 }
 
 </style>
