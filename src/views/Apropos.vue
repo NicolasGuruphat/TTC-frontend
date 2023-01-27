@@ -41,7 +41,7 @@ export default {
 .bottom-section {
   padding-top: 3%;
   height: 75%;
-  background-color: #5FC2BA;
+  background-color: #709CA7;
   border-radius: 10px;
 }
 
