@@ -1,5 +1,5 @@
 <template>
-  <form id="searsh" class="w-50 bg-white rounded-left p-4 m-5 rounded">
+  <form id="searsh" class="w-50 rounded-left bg p-4 m-5 rounded">
     <!-- ... -->
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Genre</label>
@@ -28,11 +28,8 @@
     <label for="distance">Distance : {{distance}} km</label>
     <br>
     <input type="range" id="distance" min="0" max="100" v-model="distance"> 
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">...</label>
-    </div>
-    <button type="button" @click="getClubs()" class="btn btn-primary">Trouve les clubs!</button>
+    <br>
+    <button type="button" @click="getClubs()" class="btn">Trouve les clubs!</button>
     <!-- ... -->
   </form>
 </template>
@@ -99,3 +96,37 @@ export default defineComponent({
   }
 })
 </script>
+
+
+<style>
+.bg
+{
+  background-color: #709CA7;
+}
+
+.form-select
+{
+  background-color: #B8CBD0;
+}
+#autocomplete{
+  background-color:#B8CBD0 ;
+}
+
+
+
+.btn
+{
+  background-color: #B8CBD0;
+}
+#distance
+{
+  margin-top: 5%;
+  margin-bottom: 10%;
+  background-color: #137C8B;
+}
+
+.redInput::placeholder{
+  color:rgb(148, 71, 71) ;
+  font-weight: bold;
+}
+</style>

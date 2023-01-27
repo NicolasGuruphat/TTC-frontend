@@ -27,5 +27,6 @@ export default {
 }
 main{
   min-height: 90vh;
+  background-color: #344D59;
 }
 </style>

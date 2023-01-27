@@ -4,7 +4,7 @@
       <summary>Information du club</summary>
       <label id="titre">{{ club.nom }}</label>
       <div>
-        <img class="imageclub" src="../images/logo_fond_blanc_viuz_basket.png" alt="Impossible de charger l'image">
+        <img class="imageclub" src="../images/basketball-ball.png" alt="Impossible de charger l'image">
         <div class="adresse">
           <div class="contact">
             <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
@@ -132,9 +132,7 @@ section {
   color: #fff;
 }
 
-.imageClub {
-  size: 40%;
-}
+
 
 summary {
   display: block;
@@ -160,7 +158,8 @@ details>div {
 
 details>div>img {
   align-self: flex-start;
-  max-width: 100%;
+  max-width: 50%;
+  align-content: ;
   margin-top: 20px;
 }
 
