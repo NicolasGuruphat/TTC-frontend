@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-dark navbar-expand-lg indigo">
+  <nav class="navbar  navbar-expand-lg indigo">
     <div class="container-fluid">
-      <router-link to="/home" class="navbar-brand text-white">TTC</router-link>
+      <router-link to="/home" class="navbar-brand">TTC</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -17,12 +17,12 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <router-link to="/search"
-              class="nav-link text-white active"
+              class="nav-link active"
               aria-current="page"
               >Trouve un Club !</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/apropos" class="nav-link text-white">A propos</router-link>
+            <router-link to="/apropos" class="nav-link">A propos</router-link>
 
           </li>
 
@@ -30,25 +30,33 @@
           
 
         </ul>
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
           <input
             class="form-control me-2"
             type="search"
             placeholder="Cherche un club"
             aria-label="Search"
           />
-          <button class="btn btn-outline-light" type="submit">
+           <button class="btn btn-outline-light" type="submit">
             Cherche
-          </button>
-        </form>
+          </button> 
+        </form> -->
       </div>
     </div>
   </nav>
 </template>
 
 <style scoped>
+
+
+.btn
+{
+  background-color: #0B162C;
+  color: #26325E;
+}
+
 nav {
-  background-color: #4268fb;
+  background-color: #137C8B;
 }
 
 .navbar-brand {
@@ -57,14 +65,21 @@ nav {
   padding-bottom: auto;
   font-weight: bold;
   font-size: 20px;
-  color: #ffd554 !important;
+
+  color: #B8CBD0 !important;
 }
 
 a{
   font-weight: bold;
+  
+}
+
+.nav-link
+{
+  color: #B8CBD0;
 }
 a:hover{
-  color: #26325E !important;
+  color: white !important;
 }
 
 </style>
