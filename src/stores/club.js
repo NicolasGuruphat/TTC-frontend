@@ -21,14 +21,13 @@ export const useClubStore = defineStore('counter', {
     
   },
   actions: {
-   async getClubByLocation(adresse,longitude, latitude, distance) {
+   async getClubByLocation(longitude, latitude, distance, categories, genre) {
     try {
-      console.log(adresse);
-      console.log(longitude);
-      console.log(latitude);
-      console.log(distance);
 
-      this.clubs= await axios.get("http://localhost:3001/api/search?max_distance="+distance+"&adresse="+adresse.replace(" ", "+")+"&genre=f");
+      const baseURL="http://localhost:3001/api/search"
+      const parameters = "?max_distance="+distance+"&lat="+latitude+"&lng="+longitude+"&genre="+genre/*+"&categories="+categories+"&adresse="+adresse*/;
+      const request = baseURL+parameters;
+      this.clubs= await axios.get(request);
       // this.clubs = await axios.get(
       //   "http://localhost:3001/api/search/",
       //   requestBody
@@ -37,7 +36,8 @@ export const useClubStore = defineStore('counter', {
       // JSON responses are automatically parsed.
     }
     catch (error) {
-            return(error);
+      console.log(error);
+      return(error);
          
     }
   }

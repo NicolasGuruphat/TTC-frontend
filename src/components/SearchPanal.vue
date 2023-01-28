@@ -3,21 +3,21 @@
     <!-- ... -->
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Genre</label>
-      <select class="form-select" aria-label="Disabled select example">
-        <option value="1">Masculine</option>
-        <option value="2">Feminine</option>
-        <option value="3">Mixte</option>
+      <select class="form-select" model="genre" aria-label="Disabled select example">
+        <option value="f">Masculine</option>
+        <option value="m">Feminine</option>
+        <option value="a">Mixte</option>
       </select>
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Catégorie d'âge</label>
-      <select class="form-select" aria-label="Disabled select example">
-        <option value="1">U10-U11 (Poussins)</option>
-        <option value="2">U12-U13 (Benjamins)</option>
-        <option value="3">U14-U15 (Minimes)</option>
-        <option value="4">U16-U17 (Cadets)</option>
-        <option value="5">U18-U19-U20 (Junior)</option>
-        <option value="5">Seniors</option>
+      <select class="form-select" model="categories" aria-label="Disabled select example">
+        <option value="U10-U11">U10-U11 (Poussins)</option>
+        <option value="U12-U13">U12-U13 (Benjamins)</option>
+        <option value="U14-U15">U14-U15 (Minimes)</option>
+        <option value="U16-U17">U16-U17 (Cadets)</option>
+        <option value="U18-U19-U20">U18-U19-U20 (Junior)</option>
+        <option value="Seniors">Seniors</option>
       </select>
     </div>
     <div class="mb-3">
@@ -48,7 +48,9 @@ export default defineComponent({
       adressePlaceHolder: " 451 Cr Emile Zola",
       distance: 0,
       latitude: null,
-      longitude: null
+      longitude: null,
+      categories: "U10-U11",
+      genre: "m"
     }
   },
   mounted() {
@@ -83,7 +85,6 @@ export default defineComponent({
         this.adresse=place.formatted_address;
         this.store.currentSearch.latitude=place.geometry.location.lat();
         this.store.currentSearch.longitude=place.geometry.location.lng();
-
         this.latitude = place.geometry.location.lat();
         this.longitude = place.geometry.location.lng();
       });
@@ -94,7 +95,7 @@ export default defineComponent({
         this.adresseIsEmpty=true;
         this.adressePlaceHolder="Adresse doit contenir une valeur"
       }else{
-        this.store.getClubByLocation(this.adresse,this.longitude, this.latitude,this.distance);
+        this.store.getClubByLocation(this.longitude, this.latitude,this.distance, this.categories, this.genre);
       }
     }
   }
