@@ -12,14 +12,17 @@ export default {
   watch: {
     "store.clubs": {
       handler: function (val, oldVal) {
-        //Centrer la carte 
-        //Placer un point rouge au centre de la recherche
         console.log(val)
         this.markers.forEach(marker=>{
           marker.remove(this.map);
         })      
         this.map.setView([this.store.currentSearch.latitude,this.store.currentSearch.longitude],13);
-        // leaflet.marker([this.store.currentSearch.latitude,this.store.currentSearch.longitude]).addTo(this.map)
+        const customIcon = leaflet.divIcon({
+          className: 'custom-icon',
+          html: `<span style="color: #709CA7; background-color:transparent;font-size:20px; font-weight: bold">X</span>`
+        });
+        let searchMarker=leaflet.marker([this.store.currentSearch.latitude,this.store.currentSearch.longitude], {icon: customIcon}).addTo(this.map);
+        this.markers.push(searchMarker);
         val.data.forEach(element=> {
           console.log(element);
           console.log(element.location.coordinates);
