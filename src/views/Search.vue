@@ -3,9 +3,11 @@
     <SearchPanal @clubs="clubs = $event"></SearchPanal>
     <Map :latitude = 45.764043 :longtitude= 4.835659 @setClub="club = $event" :clubs="clubs" @displayPopUp = "displayPopUp = $event">
     </Map>
+    <PopUpClub v-if="displayPopUp" @switchDisplay="displayPopUp = !displayPopUp" :club="club"/>
+    <div> - </div>
   </div>
   <!-- bouton temporaire -->
-  <PopUpClub v-if="displayPopUp" @switchDisplay="displayPopUp = !displayPopUp" :club="club"/>
+  
 </template>
 
 <script lang="ts">
@@ -31,4 +33,14 @@ export default {
 
 
 
+<style>
 
+.w-75
+{
+  width : 100% !important
+}
+
+.justify-content-center {
+  justify-content: left !important;
+}
+</style>
