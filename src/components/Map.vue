@@ -13,14 +13,20 @@ export default {
     "store.clubs": {
       handler: function (val, oldVal) {
         console.log(val)
+        // this.map.setView([this.latitude, this.longtitude], 13);
+        this.markers.forEach(marker=>{
+          marker.remove(this.map);
+        })
         val.forEach(element=> {
           console.log(element);
           console.log(element.location.coordinates);
           let coords = element.location.coordinates;
-          leaflet.marker([coords[1], coords[0]]).addTo(this.map).on('click', ()=>{
+          let marker = leaflet.marker([coords[1], coords[0]]);
+          marker.addTo(this.map).on('click', ()=>{
             this.$emit("setClub", element);
             this.$emit("displayPopUp", true);
           });
+          this.markers.push(marker);
         });
       },
       deep: true,
@@ -34,7 +40,8 @@ export default {
     data(){
       return {
         map: null,
-        store: useClubStore()
+        store: useClubStore(),
+        markers:[]
       }
     },
     mounted(){
