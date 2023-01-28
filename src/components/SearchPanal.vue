@@ -25,7 +25,7 @@
       <br>
       <input type="text" id="autocomplete" class="form-control" :placeholder="adressePlaceHolder" v-model="adresse" @focus="(adresseIsEmpty=false)" :class="{redInput:adresseIsEmpty}"/>
     </div>
-    <label for="distance">Distance : {{distance}} km</label>
+    <label for="distance" model="distance">Distance : {{distance}} km</label>
     <br>
     <input type="range" id="distance" min="0" max="100" v-model="distance"> 
     <br>
@@ -42,7 +42,7 @@ import { mapGetters } from "pinia";
 export default defineComponent({
   data() {
     return {
-      club: useClubStore(),
+      store: useClubStore(),
       adresse: "",
       adresseIsEmpty: false,
       adressePlaceHolder: " 451 Cr Emile Zola",
@@ -80,6 +80,10 @@ export default defineComponent({
       const autocomplete = new google.maps.places.Autocomplete(input);
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace();
+        this.adresse=place.formatted_address;
+        this.store.currentSearch.latitude=place.geometry.location.lat();
+        this.store.currentSearch.longitude=place.geometry.location.lng();
+
         this.latitude = place.geometry.location.lat();
         this.longitude = place.geometry.location.lng();
       });
@@ -90,7 +94,7 @@ export default defineComponent({
         this.adresseIsEmpty=true;
         this.adressePlaceHolder="Adresse doit contenir une valeur"
       }else{
-        this.club.getClubByLocation(this.adresse);
+        this.store.getClubByLocation(this.adresse,this.longitude, this.latitude,this.distance);
       }
     }
   }
@@ -112,6 +116,10 @@ export default defineComponent({
   background-color:#B8CBD0 ;
 }
 
+.w-50
+{
+  width : 30% !important
+}
 
 
 .btn

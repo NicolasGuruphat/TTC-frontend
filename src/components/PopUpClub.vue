@@ -10,7 +10,8 @@
             <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
             <label id="mail_club">{{ club.email }}</label><br>
             <label id="fax_club"> {{ club.telephone }}</label> <br>
-            <label id="siteWeb_club"> {{ club.site }}</label> <br>
+            <label id="site"> Site Web : </label>
+            <a id="siteWeb_club"> {{ club.site }}</a> <br>
             <label id="ville"> Ville : </label> <label id="ville_club"> {{ club.ville }}</label><br>
           </div>
         </div>
@@ -66,6 +67,7 @@ export default defineComponent({
     closeOtherDetails() {
      // Fetch all the details element.
 const details = document.querySelectorAll("details");
+
 // Add the onclick listeners.
 details.forEach((targetDetail) => {
   targetDetail.addEventListener("click", () => {
@@ -128,7 +130,7 @@ body {
 section {
   max-width: var(--sectionWidth);
   margin: 40px auto;
-  width: 97%;
+  width: 30%;
   color: #fff;
 }
 
@@ -159,12 +161,16 @@ details>div {
 details>div>img {
   align-self: flex-start;
   max-width: 50%;
-  align-content: ;
   margin-top: 20px;
 }
 
 details>div>p {
   flex: 1;
+}
+
+#titre
+{
+  font-weight: bold;
 }
 
 details[open]>summary {
@@ -192,6 +198,8 @@ details[open]>summary {
     opacity: 0;
     height: 100%;
     margin: 0;
+    padding-left: 20%;
+    margin-bottom: 10%;
     animation-name: showImage;
     animation-duration: 0.3s;
     animation-delay: 0.15s;
@@ -235,4 +243,5 @@ details[open]>summary {
     opacity: 1;
   }
 }
+
 </style> -->
