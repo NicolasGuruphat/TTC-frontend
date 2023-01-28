@@ -13,7 +13,7 @@ export default {
     "store.clubs": {
       handler: function (val, oldVal) {
         console.log(val)
-        val.forEach(element=> {
+        val.data.forEach(element=> {
           console.log(element);
           console.log(element.location.coordinates);
           let coords = element.location.coordinates;
