@@ -73,7 +73,7 @@ export default {
 <style second>
 #map {
   height: 600px;
-  width : 800px;
+  width : 1100px;
   border-radius: .40rem
 }
 </style>

@@ -112,6 +112,10 @@ export default defineComponent({
   background-color:#B8CBD0 ;
 }
 
+.w-50
+{
+  width : 30% !important
+}
 
 
 .btn
