@@ -12,7 +12,11 @@ export default {
   watch: {
     "store.clubs": {
       handler: function (val, oldVal) {
+        //Centrer la carte 
+        //Placer un point rouge au centre de la recherche
         console.log(val)
+        this.map.setView([this.store.currentSearch.latitude,this.store.currentSearch.longitude],13);
+        // leaflet.marker([this.store.currentSearch.latitude,this.store.currentSearch.longitude]).addTo(this.map)
         val.data.forEach(element=> {
           console.log(element);
           console.log(element.location.coordinates);

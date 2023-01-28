@@ -5,7 +5,11 @@ export const useClubStore = defineStore('counter', {
   state: () => {
     return {
       clubs: {
-      }
+      },
+      currentSearch:{
+        longitude:45.764043,
+        latitude:4.835659,
+      },
     }
   },
   getters:
@@ -17,14 +21,30 @@ export const useClubStore = defineStore('counter', {
     
   },
   actions: {
-   async getClubByLocation(location) {
+   async getClubByLocation(adresse,longitude, latitude, distance) {
     try {
-      const rdmlocation =  
-      {
-        "position": {
-        "lat":1.478099, 
-        "long":	88.442229}
-      }
+      console.log(adresse);
+      console.log(longitude);
+      console.log(latitude);
+      console.log(distance);
+
+      this.clubs= await axios.get("http://localhost:3001/api/search?max_distance="+distance+"&adresse="+adresse.replace(" ", "+")+"&genre=f");
+      // this.clubs = await axios.get(
+      //   "http://localhost:3001/api/search/",
+      //   requestBody
+      // ).then
+      // ((response)=>console.log(response))
+      // JSON responses are automatically parsed.
+    }
+    catch (error) {
+            return(error);
+         
+    }
+  }
+},
+}
+)
+
 //       this.clubs=[{
 //           "nom": "CD01 - HORS ASSOCIATION - AIN - ARA0001001 - Club",
 //           "adresse": "29 Bis Avenue de Bad Kreuznach",
@@ -102,26 +122,4 @@ export const useClubStore = defineStore('counter', {
 //           "TIC U13 F\u00e9minin 2022 (PIERRE BENITE)"
 //       ]
 // }]
-      let requestBody={
-        "max_distance": 10,
-        "adresse" : "27 Boulevard Eugène Deruelle",
-        "Catégorie":"U11"
-      }
-      this.clubs= await axios.get("http://localhost:3001/api/search?max_distance=30&adresse=47+route+de+belleville+69910&genre=f");
-      // this.clubs = await axios.get(
-      //   "http://localhost:3001/api/search/",
-      //   requestBody
-      // ).then
-      // ((response)=>console.log(response))
-      // JSON responses are automatically parsed.
-    }
-    catch (error) {
-            return(error);
-         
-    }
-  }
-},
-}
-)
-
 
