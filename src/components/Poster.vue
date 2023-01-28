@@ -1,8 +1,8 @@
 
 <template>
     <div id="poster" class="d-flex flex-column justify-content-center align-items-center">
-    <h1>Choisissez votre activité préférée</h1>
-    <h1>et trouvez le club le plus convenant pour toi</h1>
+    <h1>Choisis ton activité préférée</h1>
+    <h1>et trouve le club le plus adapté pour toi</h1>
 
     <a class="text-decoration-none mt-5" href="#sports"><h1  class="mt-5 text-warning">C'est parti !</h1></a> 
 

@@ -15,16 +15,21 @@ export default {
         //Centrer la carte 
         //Placer un point rouge au centre de la recherche
         console.log(val)
+        this.markers.forEach(marker=>{
+          marker.remove(this.map);
+        })      
         this.map.setView([this.store.currentSearch.latitude,this.store.currentSearch.longitude],13);
         // leaflet.marker([this.store.currentSearch.latitude,this.store.currentSearch.longitude]).addTo(this.map)
         val.data.forEach(element=> {
           console.log(element);
           console.log(element.location.coordinates);
           let coords = element.location.coordinates;
-          leaflet.marker([coords[1], coords[0]]).addTo(this.map).on('click', ()=>{
+          let marker = leaflet.marker([coords[1], coords[0]]);
+          marker.addTo(this.map).on('click', ()=>{
             this.$emit("setClub", element);
             this.$emit("displayPopUp", true);
           });
+          this.markers.push(marker);
         });
       },
       deep: true,
@@ -38,7 +43,8 @@ export default {
     data(){
       return {
         map: null,
-        store: useClubStore()
+        store: useClubStore(),
+        markers:[]
       }
     },
     mounted(){
