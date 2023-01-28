@@ -7,11 +7,11 @@
         <img class="imageclub" src="../images/basketball-ball.png" alt="Impossible de charger l'image">
         <div class="adresse">
           <div class="contact">
-            <label id="adresse"> Adresse</label><label id="adresse_club"> : {{ club.adresse }} </label><br>
-            <label id="mail_club">{{ club.email }}</label><br>
+            <label id="adresse"> Adresse :</label><label id="adresse_club"> {{ club.adresse }} </label><br>
+            <label>Email : </label><a id="mail_club" :href="'mailto:'+club.email">{{ club.email }}</a><br>
             <label id="fax_club"> {{ club.telephone }}</label> <br>
             <label id="site"> Site Web : </label>
-            <a id="siteWeb_club"> {{ club.site }}</a> <br>
+            <a id="siteWeb_club" :href="club.site"> {{ club.site }}</a> <br>
             <label id="ville"> Ville : </label> <label id="ville_club"> {{ club.ville }}</label><br>
           </div>
         </div>
@@ -135,7 +135,9 @@ section {
 }
 
 
-
+a{
+  color:#709CA7;
+}
 summary {
   display: block;
   cursor: pointer;
