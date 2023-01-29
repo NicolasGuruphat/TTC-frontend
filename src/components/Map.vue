@@ -12,25 +12,27 @@ export default {
   watch: {
     "store.clubs": {
       handler: function (val, oldVal) {
-        //Centrer la carte 
-        //Placer un point rouge au centre de la recherche
-        console.log(val)
-        this.markers.forEach(marker=>{
-          marker.remove(this.map);
-        })      
-        this.map.setView([this.store.currentSearch.latitude,this.store.currentSearch.longitude],13);
-        // leaflet.marker([this.store.currentSearch.latitude,this.store.currentSearch.longitude]).addTo(this.map)
-        val.data.forEach(element=> {
-          console.log(element);
-          console.log(element.location.coordinates);
-          let coords = element.location.coordinates;
-          let marker = leaflet.marker([coords[1], coords[0]]);
-          marker.addTo(this.map).on('click', ()=>{
-            this.$emit("setClub", element);
-            this.$emit("displayPopUp", true);
+        if(val){
+          this.markers.forEach(marker=>{
+            marker.remove(this.map);
+          })      
+          this.map.setView([this.store.currentSearch.latitude,this.store.currentSearch.longitude],13);
+          const customIcon = leaflet.divIcon({
+            className: 'custom-icon',
+            html: `<span style="color: #709CA7; background-color:transparent;font-size:20px; font-weight: bold">X</span>`
           });
-          this.markers.push(marker);
-        });
+          let searchMarker=leaflet.marker([this.store.currentSearch.latitude,this.store.currentSearch.longitude], {icon: customIcon}).addTo(this.map);
+          this.markers.push(searchMarker);
+          val.data.forEach(element=> {
+            let coords = element.location.coordinates;
+            let marker = leaflet.marker([coords[1], coords[0]]);
+            marker.addTo(this.map).on('click', ()=>{
+              this.$emit("setClub", element);
+              this.$emit("displayPopUp", true);
+            });
+            this.markers.push(marker);
+          });
+        }
       },
       deep: true,
     },

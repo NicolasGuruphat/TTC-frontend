@@ -4,6 +4,9 @@ import Nav from "./components/base/Nav.vue";
 export default {
   components: {
     Nav
+  },
+  mounted(){
+    this.$router.push('/home');
   }
 }
 </script>
