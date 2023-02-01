@@ -38,16 +38,21 @@ export default {
   margin-bottom: 10%;
 }
 
-.about-page .bottom-section {
+.bottom-section {
   padding-top: 3%;
   height: 75%;
   background-color: #709CA7;
   border-radius: 10px;
-  
+ 
   justify-content: none !important;
 
 }
 
+.about-page 
+{
+  padding-left: 10%;
+  padding-right: 10%;
+}
 .container {
   
   margin: 1rem 0;
