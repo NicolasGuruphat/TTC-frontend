@@ -132,6 +132,7 @@ export default defineComponent({
 {
   margin-top: 5%;
   margin-bottom: 10%;
+  width : 100%;  
   background-color: #137C8B;
 }
 

@@ -38,11 +38,14 @@ export default {
   margin-bottom: 10%;
 }
 
-.bottom-section {
+.about-page .bottom-section {
   padding-top: 3%;
   height: 75%;
   background-color: #709CA7;
   border-radius: 10px;
+  
+  justify-content: none !important;
+
 }
 
 .container {
