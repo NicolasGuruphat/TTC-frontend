@@ -1,6 +1,6 @@
 <template>
   <section>
-    <details open v-on:click="closeOtherDetails()">
+    <details v-on:click="closeOtherDetails()">
       <summary>Information du club</summary>
       <label id="titre">{{ club.nom }}</label>
       <div>
@@ -42,7 +42,7 @@
           <div class="equipe">
             <label id="titre">Equipe : </label><br>
             <div class="ligne2" v-for="equipe, key in club.equipes">
-              <label id="equipe_club"> {{ equipe }} </label>
+             <ul><li id="equipe_club"> {{ equipe }} </li></ul>
             </div>
           </div>
         </div>
@@ -134,6 +134,16 @@ section {
   color: #fff;
 }
 
+ul
+{
+  margin-top: 0;
+  margin-bottom: 1px;
+}
+
+li
+{
+  font-size: 13px;
+}
 
 a{
   color:#709CA7;

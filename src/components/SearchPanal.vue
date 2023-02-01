@@ -119,7 +119,8 @@ export default defineComponent({
 
 .w-50
 {
-  width : 30% !important
+  width : 30% !important;
+  height: 100%;
 }
 
 

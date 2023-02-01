@@ -37,7 +37,7 @@ export default {
 
 .w-75
 {
-  width : 100% !important
+  width : 100% !important;
 }
 
 .justify-content-center {
