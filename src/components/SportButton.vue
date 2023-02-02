@@ -5,8 +5,8 @@
         id="sport_button"
         class="d-flex flex-column justify-content-center align-items-center rounded"
       >
-        <img id="sport_icon" src="src\images\basketball-ball.png" />
-        <p class="mb-0 text-body fs-3 fw-bold">Basketball</p>
+        <img class="mt-3" id="sport_icon" :src="icon" />
+        <p class="mb-0 text-body fs-3 fw-bold">{{ text }}</p>
       </div>
     </router-link>
   </div>
@@ -14,7 +14,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-export default defineComponent({});
+export default defineComponent({
+  props: ["icon", "text"]
+});
 </script>
 
 <style>

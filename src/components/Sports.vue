@@ -12,15 +12,21 @@ export default {
     <div id="sports" class="p-4">
         <h2 class="m-4 text-white">Choose your favorite activity</h2>
         <div class="d-flex flex-wrap">
-        <SportButton></SportButton>
-        <SportButton></SportButton>
-        <SportButton></SportButton>
-        <SportButton></SportButton>
-        <SportButton></SportButton>
-        <SportButton></SportButton>
-        <SportButton></SportButton>
-        <SportButton></SportButton>
-        <SportButton></SportButton>
+        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
+        <SportButton icon="src\images\football.png" text="Football"></SportButton>
+        <SportButton icon="src\images\handball.png" text="Handball"></SportButton>
+        <SportButton icon="src\images\rugby.png" text="Rugby"></SportButton>
+        <SportButton icon="src\images\tennis.png" text="Tennis"></SportButton>
+        <SportButton icon="src\images\ping-pong.png" text="Ping pong"></SportButton>
+        <SportButton icon="src\images\swim.png" text="Natation"></SportButton>
+        <SportButton icon="src\images\archery.png" text="Tir à l'arc"></SportButton>
+        <SportButton icon="src\images\horseshoe.png" text="Équitation"></SportButton>
+        <SportButton icon="src\images\boxer.png" text="Boxe"></SportButton>
+        <SportButton icon="src\images\judo.png" text="Judo"></SportButton>
+        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
+        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
+        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
+
         </div>
         
     </div>
