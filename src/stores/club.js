@@ -23,10 +23,11 @@ export const useClubStore = defineStore('counter', {
   actions: {
    async getClubByLocation(longitude, latitude, distance, categories, genre) {
     try {
-
       const baseURL="http://localhost:3001/api/search"
-      const parameters = "?max_distance="+distance+"&lat="+latitude+"&lng="+longitude+"&genre="+genre/*+"&categories="+categories+"&adresse="+adresse*/;
+      const parameters = "?max_distance="+distance+"&lat="+latitude+"&lng="+longitude+"&genre="+genre+"&categories="+categories/*+"&adresse="+adresse*/;
       const request = baseURL+parameters;
+      console.log(request)
+      console.log(categories)
       this.clubs= await axios.get(request);
       // this.clubs = await axios.get(
       //   "http://localhost:3001/api/search/",

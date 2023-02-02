@@ -3,15 +3,15 @@
     <!-- ... -->
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Genre</label>
-      <select class="form-select" model="genre" aria-label="Disabled select example">
-        <option value="f">Masculine</option>
-        <option value="m">Feminine</option>
+      <select class="form-select" v-model="genre" aria-label="Disabled select example">
+        <option value="m">Masculine</option>
+        <option value="f">Feminine</option>
         <option value="a">Mixte</option>
       </select>
     </div>
     <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Catégorie d'âge</label>
-      <select class="form-select" model="categories" aria-label="Disabled select example">
+      <select class="form-select" v-model="categories" aria-label="Disabled select example">
         <option value="U10-U11">U10-U11 (Poussins)</option>
         <option value="U12-U13">U12-U13 (Benjamins)</option>
         <option value="U14-U15">U14-U15 (Minimes)</option>
@@ -30,7 +30,6 @@
     <input type="range" id="distance" min="0" max="100" v-model="distance"> 
     <br>
     <button type="button" @click="getClubs()" class="btn">Trouve les clubs!</button>
-    <!-- ... -->
   </form>
 </template>
 
