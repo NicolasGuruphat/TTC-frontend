@@ -2,7 +2,7 @@
   <div class="about-page">
     <div class="top-section"></div>
     <div class="bottom-section">
-        <div class="container d-flex flex-column align-items-center">
+        <div class="about-page  d-flex flex-column align-items-center">
             <h1>Notre équipe TTC</h1>
             <Logo />
             <Description />

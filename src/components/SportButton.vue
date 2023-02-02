@@ -8,6 +8,7 @@
         <img id="sport_icon" src="src\images\basketball-ball.png" />
         <p class="mb-0 text-body fs-3 fw-bold">Basketball</p>
       </div>
+      
     </router-link>
   </div>
 </template>
