@@ -12,7 +12,7 @@ export default {
     <div id="sports" class="p-4">
         <h2 class="m-4 text-white">Choisis ton sport !</h2>
         <div class="d-flex flex-wrap">
-        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
+        <SportButton icon="src\images\basketball-ball.png" text="Basketball"></SportButton>
         <SportButton icon="src\images\football.png" text="Football"></SportButton>
         <SportButton icon="src\images\handball.png" text="Handball"></SportButton>
         <SportButton icon="src\images\rugby.png" text="Rugby"></SportButton>
