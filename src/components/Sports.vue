@@ -23,9 +23,7 @@ export default {
         <SportButton icon="src\images\horseshoe.png" text="Équitation"></SportButton>
         <SportButton icon="src\images\boxer.png" text="Boxe"></SportButton>
         <SportButton icon="src\images\judo.png" text="Judo"></SportButton>
-        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
-        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
-        <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
+        <SportButton icon="src\images\run.png" text="Athlétisme"></SportButton>
 
         </div>
         

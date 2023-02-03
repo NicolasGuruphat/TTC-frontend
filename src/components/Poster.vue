@@ -1,10 +1,10 @@
 
 <template>
-    <div id="poster" class="d-flex flex-column justify-content-center align-items-center">
-    <h1>Choisis ton activité préférée</h1>
+    <div id="poster" class="d-flex flex-column align-items-center">
+    <h1 class="mt-5">Choisis ton activité préférée</h1>
     <h1>et trouve le club le plus adapté pour toi</h1>
 
-    <a class="text-decoration-none mt-5" href="#sports"><h1  class="mt-5 text-warning">C'est parti !</h1></a> 
+    <a class="text-decoration-none" href="#sports"><h1  class="mt-5 text-warning">C'est parti !</h1></a> 
 
     </div>
 </template>
@@ -21,6 +21,7 @@ export default defineComponent({});
     height: calc(100vh - 56px);
     background-image : url('@/images/ezgif.com-gif-maker(2).gif');
     background-size: cover;
+    justify-content: center !important;
     
 }
 h1{
