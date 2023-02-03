@@ -10,7 +10,7 @@ export default {
 
 <template>
     <div id="sports" class="p-4">
-        <h2 class="m-4 text-white">Choose your favorite activity</h2>
+        <h2 class="m-4 text-white">Choisis ton sport !</h2>
         <div class="d-flex flex-wrap">
         <SportButton icon="src\images\basketball.png" text="Basketball"></SportButton>
         <SportButton icon="src\images\football.png" text="Football"></SportButton>

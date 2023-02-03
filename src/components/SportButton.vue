@@ -8,6 +8,7 @@
         <img class="mt-3" id="sport_icon" :src="icon" />
         <p class="mb-0 text-body fs-3 fw-bold">{{ text }}</p>
       </div>
+      
     </router-link>
   </div>
 </template>
